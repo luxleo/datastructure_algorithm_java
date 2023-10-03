@@ -72,6 +72,9 @@ public class SortingAlgorithms {
         int left = start + 1, right = end;
         int standard = data[pivot];
 
+        /*
+        반드시 left,right 인덱스가 서로 교차되도록 강제 한다.
+         */
         while (left <= right) {
             // 기준에 맞게 left,right 인덱스 이동시켜준다.
             while (left <= end && data[left] <= standard) {
