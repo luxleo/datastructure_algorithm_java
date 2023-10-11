@@ -52,7 +52,6 @@ public class BinarySearch {
         }
         return -1; // 찾는 target이 없는 경우 -1 반환하기
     }
-
     /**
      * 만약 찾는 target이 없으면 target이 들어가야하는 위치를 찾는다
      * upperbound 형식이다.

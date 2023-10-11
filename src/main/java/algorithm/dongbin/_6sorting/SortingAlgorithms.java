@@ -21,13 +21,14 @@ public class SortingAlgorithms {
      * 따라서 O(n^2)의 시간 복잡도를 가진다.
      */
     private static int[] selectionSort() {
-        System.out.println("[selection sort started]");
+        System.out.print("[selection sort started]");
         int[] copiedData = Arrays.stream(data)
                 .toArray();
-
-        for (int i = 0; i < copiedData.length; i++) {
+        int operationCnt = 0;
+        for (int i = 0; i < copiedData.length-1; i++) {
             int minIdx = i;
             for (int j = i+1; j <copiedData.length ; j++) {
+                operationCnt++;
                 if (copiedData[minIdx] > copiedData[j]) {
                     minIdx = j; // 현재 기준 인덱스 보다 작은 녀석이 있으면 기준 인덱스를 바꾸어준다.
                 }
@@ -37,6 +38,7 @@ public class SortingAlgorithms {
             copiedData[i] = copiedData[minIdx];
             copiedData[minIdx] = temp;
         }
+        System.out.printf(" %d times\n",operationCnt);
         return copiedData;
     }
 
@@ -46,12 +48,13 @@ public class SortingAlgorithms {
      * 특징 : 잘 정렬되어있을수록 빠른 속도를 자랑한다.(중간에 break문이 있으므로)
      */
     private static int[] insertSort() {
-        System.out.println("[insert sort start]");
+        System.out.print("[insert sort start]");
         int[] rawData = Arrays.stream(data).toArray();
         int length = rawData.length;
-
+        int operationCnt = 0;
         for (int i = 1; i < length; i++) {
             for (int j = i; j > 0; j--) {
+                operationCnt++;
                 if (rawData[j] < rawData[j - 1]) {
                     // 만일 정렬해야 되는 대상이면 정렬하면서 내려간다.
                     int temp = rawData[j];
@@ -63,6 +66,7 @@ public class SortingAlgorithms {
                 }
             }
         }
+        System.out.printf(" %d times\n",operationCnt);
         return rawData;
     }
 
