@@ -13,7 +13,6 @@ public class _92BigNum {
     static Integer n;
     static Integer m;
     static Integer k;
-
     static Integer first,second;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
