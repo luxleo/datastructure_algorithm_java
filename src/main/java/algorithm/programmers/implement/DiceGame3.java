@@ -57,27 +57,23 @@ public class DiceGame3 {
                 return (max + min) * (max - min);
             }else {
                 //세 주사위에서 나온 숫자가 p로 같고 나머지 다른 주사위에서 나온 숫자가 q인 경우
-                List<Integer> sorted = map.entrySet().stream()
-                        .sorted((e1, e2) -> e1.getValue() - e2.getValue())
-                        .map(e -> e.getKey())
-                        .collect(Collectors.toList());
+                List<Integer> sorted = mapToList(map);
                 Integer min = sorted.get(0);
                 Integer max = sorted.get(1);
                 return (int) Math.pow((10 * max + min), 2);
             }
         } else if (keySize == 3) {
             //어느 두 주사위에서 나온 숫자가 p로 같고 나머지 두 주사위에서 나온 숫자가 각각 p와 다른 q, r인 경우
-            List<Integer> sorted = map.entrySet().stream()
-                    .sorted((e1, e2) -> e1.getValue() - e2.getValue())
-                    .map(e -> e.getKey())
-                    .collect(Collectors.toList());
+            List<Integer> sorted = mapToList(map);
             return sorted.get(0) * sorted.get(1);
         }else
             //네 주사위에 적힌 숫자가 모두 다른 경우.
-            return map.entrySet().stream()
-                    .sorted((e1, e2) -> e1.getValue() - e2.getValue())
-                    .map(e -> e.getKey())
-                    .collect(Collectors.toList())
-                    .get(0);
+            return mapToList(map).get(0);
+    }
+    public List<Integer> mapToList(Map<Integer, Integer> map) {
+        return map.entrySet().stream()
+                .sorted((e1, e2) -> e1.getValue() - e2.getValue())
+                .map(e -> e.getKey())
+                .collect(Collectors.toList());
     }
 }
