@@ -20,6 +20,20 @@ public class _Group49 {
         return result;
     }
 
+    public List<List<String>> advancedSolution(String[] strs) {
+        Map<String, List<String>> dict = new HashMap<>();
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String curKey = String.valueOf(chars);
+
+            if (!dict.containsKey(curKey)) {
+                dict.put(curKey, new ArrayList<>());
+            }
+            dict.get(curKey).add(str);
+        }
+        return new ArrayList<>(dict.values());
+    }
     public String getKey(String data) {
         char[] chars = data.toCharArray();
         Arrays.sort(chars);
