@@ -19,7 +19,9 @@ public class BinarySearch {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int limit = Integer.parseInt(st.nextToken());
-        data = IntStream.rangeClosed(0, limit).toArray();
+        data = IntStream.rangeClosed(0, limit)
+                .filter(x -> (x%2) == 0)
+                .toArray();
 
         System.out.println("찾으려는 숫자를 말해보시오:");
         st = new StringTokenizer(br.readLine());
@@ -29,7 +31,9 @@ public class BinarySearch {
         count = 0; // upperbound search 를 위해 초기화
 
         targetIdx = upperBoundBinarySearch(target);
-        System.out.println(String.format("인덱스: %d, 연산횟수: %d", targetIdx, count));
+        System.out.println(String.format("인덱스: %d, 연산횟수: %d",targetIdx , count));
+
+        System.out.println(String.format("인덱스: %d, 연산횟수: %d", lowerBoundBinarySearch(target), count));
     }
 
     /**
@@ -52,6 +56,22 @@ public class BinarySearch {
         }
         return -1; // 찾는 target이 없는 경우 -1 반환하기
     }
+
+    private static int lowerBoundBinarySearch(int target) {
+        int start = 0, end = data.length - 1;
+        int mid;
+        count = 0;
+        while (start < end) {
+            count ++;
+            mid = (start+ end) >>>1;
+            if (data[mid] < target) {
+                start = mid+1;
+            } else
+                end = mid-1;
+        }
+        System.out.println(String.format("lower bound ans: %d",data[start]));
+        return start;
+    }
     /**
      * 만약 찾는 target이 없으면 target이 들어가야하는 위치를 찾는다
      * upperbound 형식이다.
@@ -71,6 +91,7 @@ public class BinarySearch {
                 return mid;
             }
         }
+        System.out.println(String.format("upper bound ans: %d",data[start]));
         return start; // 찾는 target이 없는 경우 upper bound ->
     }
 }

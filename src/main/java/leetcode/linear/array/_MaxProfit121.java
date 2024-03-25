@@ -1,4 +1,4 @@
-package leetcode.array;
+package leetcode.linear.array;
 
 /**
  * @see <a href='https://leetcode.com/problems/best-time-to-buy-and-sell-stock/'>문제 링크</a>

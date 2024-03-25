@@ -1,4 +1,6 @@
-package leetcode.linkedlist;
+package leetcode.linear.linkedlist;
+
+import leetcode.linear.util.ListNode;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -86,11 +88,4 @@ public class PalindromeLinkedList234 {
         }
         return true;
     }
-}
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }
