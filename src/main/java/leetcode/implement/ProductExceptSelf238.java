@@ -1,7 +1,12 @@
 package leetcode.implement;
 
 public class ProductExceptSelf238 {
-    public int[] productExceptSelf(int[] nums) {
+    /**
+     * 문제 조건에 어긋나는 풀이이다. -> without division operator
+     * @param nums
+     * @return
+     */
+    public int[] productExceptSelfDeprecated(int[] nums) {
         int totalProducts = 1;
         int size = nums.length;
         int zeroCnt = 0;
@@ -27,5 +32,32 @@ public class ProductExceptSelf238 {
         }
 
         return answer;
+    }
+
+    /**
+     * 해당 원소를 제외한 왼쪽, 오른쪽의 곱들을 곱한다.
+     * @param nums
+     * @return
+     */
+    public int[] productExceptSelf(int[] nums) {
+        int size = nums.length;
+        int[] left = new int[size];
+        int[] right = new int[size];
+        int[] output = new int[size];
+
+        left[0] = 1;
+        right[size - 1] = 1;
+
+        for (int i = 1; i < size; i++) {
+            left[i] = left[i - 1] * nums[i-1];
+        }
+        for (int i = size-2; i >=0 ; i--) {
+            right[i] = right[i + 1] * nums[i + 1];
+        }
+
+        for (int i = 0; i < size; i++) {
+            output[i] = left[i] * right[i];
+        }
+        return output;
     }
 }
